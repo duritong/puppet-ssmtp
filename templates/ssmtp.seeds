@@ -1,0 +1,17 @@
+# What domain to masquerade as:
+ssmtp	ssmtp/rewritedomain	string	<%= fqdn %>
+# Automatically overwrite config files?
+# Further management done via puppet
+ssmtp	ssmtp/overwriteconfig	boolean	false
+# Fully qualified hostname:
+ssmtp	ssmtp/hostname	string <%= fqdn %>
+# What name to store in /etc/mailname:
+ssmtp	ssmtp/mailname	string <%= fqdn %>
+# Who gets mail for userids < 1000:
+ssmtp	ssmtp/root	string	postmaster
+# Remote SMTP port number:
+ssmtp	ssmtp/port	string	<%= smarthost_port %>
+# Name of your mailhub:
+ssmtp	ssmtp/mailhub	string	<%= smarthost %>
+# Allow override of From: line in email header?
+ssmtp	ssmtp/fromoverride	boolean	false
