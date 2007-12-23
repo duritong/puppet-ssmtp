@@ -42,7 +42,7 @@ case $operatingsystem {
                 ensure => file,
                 mode => 644,
                 require => Package[ssmtp],
-                content => template('default.erb'),
+                content => template('ssmtp/default.erb'),
         }
         package { sendmail:
                 name => $operatingsystem ? {
