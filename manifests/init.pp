@@ -6,7 +6,7 @@ modules_dir { "ssmtp": }
 
 class ssmtp {
 case $operatingsystem {
-                centos: { include centos_repos_immerda }
+                centos: { include centos_repos }
         }
 
         package { ssmtp:
