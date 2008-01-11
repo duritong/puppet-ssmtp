@@ -2,7 +2,7 @@
 # Copyright (C) 2007 admin@immerda.ch
 #
 
-modules_dir { "ssmtp": }
+#modules_dir { "ssmtp": }
 
 class ssmtp {
 case $operatingsystem {
