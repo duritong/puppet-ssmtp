@@ -23,16 +23,31 @@ case $operatingsystem {
 
         #set default mailhub if not yet one is set
         $mailhub_real = $mailhub ? {
-                '' => 'mail.glei.ch',
-                default => $mailhub
+           '' => 'mail.glei.ch',
+           default => $mailhub
         }
         $ssmtp_uses_ssl_real = $ssmtp_uses_ssl ? {
-                '' => 'YES',
-                default => $ssmtp_uses_ssl
+           '' => 'YES',
+           default => $ssmtp_uses_ssl
         }
         $mailhub_port_real = $ssmtp_uses_ssl_real ? {
-                'YES' => ':465',
-                'NO' => ''
+           'YES' => ':465',
+           default => ''
+        }
+
+        $ssmtp_hostname_real = $ssmtp_hostname ? {
+            '' => $fqdn,
+            default => $ssmtp_hostname
+        }
+
+        $ssmtp_rewrite_domain_real = $ssmtp_rewrite_domain ? {
+            '' => $fqdn,
+            default => $ssmtp_rewrite_domain
+        }
+
+        $ssmtp_from_line_override_real = $ssmtp_from_line_override ? {
+            '' => 'YES',
+            default => $ssmtp_from_line_override
         }
 
         file { ssmtp_config:

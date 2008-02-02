@@ -19,7 +19,7 @@ mailhub=<%= mailhub_real+mailhub_port_real %>
 # mailhub=mail.your.domain:465
 
 # Wher will the mail seem to come from?
-rewriteDomain=<%= fqdn %>
+rewriteDomain=<%= ssmtp_rewrite_domain_real %>
 
 # The full hostname
 
@@ -28,11 +28,11 @@ rewriteDomain=<%= fqdn %>
 # out the hostname itself.
 
 # hostname=_HOSTNAME_
-hostname=<%= fqdn %>
+hostname=<%= ssmtp_hostname_real %>
 
 # Set this to never rewrite the "From:" line (unless not given) and to
 # use that address in the "from line" of the envelope.
-FromLineOverride=YES
+FromLineOverride=<%= ssmtp_from_line_override_real %> YES
 
 # Use SSL/TLS to send secure messages to server.
 UseTLS=<%= ssmtp_uses_ssl_real %>
