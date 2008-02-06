@@ -23,7 +23,7 @@ case $operatingsystem {
 
         service {ssmtp:
             ensure => running,
-            enabled => true,
+            enable => true,
             require => Package[ssmtp],
         }
 
