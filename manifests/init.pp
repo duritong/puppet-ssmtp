@@ -21,12 +21,6 @@ case $operatingsystem {
                 ensure => present,
         }
 
-        service {ssmtp:
-            ensure => running,
-            enable => true,
-            require => Package[ssmtp],
-        }
-
         #set default mailhub if not yet one is set
         $mailhub_real = $mailhub ? {
            '' => 'mail.glei.ch',
