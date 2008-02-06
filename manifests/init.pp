@@ -21,6 +21,12 @@ case $operatingsystem {
                 ensure => present,
         }
 
+        service {ssmtp:
+            ensure => running,
+            enabled => true,
+            require => Package[ssmtp],
+        }
+
         #set default mailhub if not yet one is set
         $mailhub_real = $mailhub ? {
            '' => 'mail.glei.ch',
@@ -57,6 +63,7 @@ case $operatingsystem {
                 ensure => file,
                 mode => 644,
                 require => Package[ssmtp],
+                notify => Service[ssmtp],
                 content => template('ssmtp/default.erb'),
         }
         package { sendmail:
@@ -71,6 +78,5 @@ case $operatingsystem {
                 ensure => absent,
                 require => Package[ssmtp],
         }
-
 }
 
