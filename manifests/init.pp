@@ -5,8 +5,8 @@
 #modules_dir { "ssmtp": }
 
 class ssmtp {
-case $operatingsystem {
-                centos: { include centos_repos }
+        case $operatingsystem {
+                centos: { include yum }
         }
 
         package { ssmtp:
