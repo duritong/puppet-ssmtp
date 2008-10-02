@@ -12,7 +12,7 @@ class ssmtp {
     }
 }
 
-class sendmail::base {
+class ssmtp::base {
     include sendmail::disable
 
     package { ssmtp:
