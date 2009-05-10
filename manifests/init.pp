@@ -14,6 +14,7 @@ class ssmtp {
 
 class ssmtp::base {
     include sendmail::disable
+    include exim::disable
 
     package { ssmtp:
         ensure => present,
