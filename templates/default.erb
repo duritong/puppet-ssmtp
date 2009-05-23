@@ -37,6 +37,9 @@ FromLineOverride=<%= ssmtp_from_line_override_real %>
 # Use SSL/TLS to send secure messages to server.
 UseTLS=<%= ssmtp_uses_ssl_real %>
 
+#Specifies whether ssmtp does a EHLO/STARTTLS before starting SSL negotiation.  See RFC 2487.
+UseSTARTTLS=YES
+
 # Use SSL/TLS certificate to authenticate against smtp host.
 #UseTLSCert=YES
 
