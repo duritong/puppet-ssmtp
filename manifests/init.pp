@@ -28,10 +28,6 @@ class ssmtp::base {
         '' => 'YES',
         default => $ssmtp_uses_ssl
     }
-    $mailhub_port_real = $ssmtp_uses_ssl_real ? {
-        'YES' => ':465',
-        default => ''
-    }
 
     $ssmtp_hostname_real = $ssmtp_hostname ? {
         '' => $fqdn,
