@@ -9,6 +9,7 @@ class ssmtp {
     default: { include ssmtp::base }
   }
   if $use_shorewall {
+    include shorewall::rules::out::smtp
     include shorewall::rules::smtp::disable
     include shorewall::rules::smtps::disable
   }
