@@ -1,3 +1,4 @@
 class ssmtp::centos inherits ssmtp::base {
-  include yum
+  # ssmtp is not in the base repos
+  require yum
 }

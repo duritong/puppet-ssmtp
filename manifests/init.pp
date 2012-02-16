@@ -3,12 +3,12 @@
 #
 
 class ssmtp {
-  case $operatingsystem {
+  case $::operatingsystem {
     centos: { include ssmtp::centos }
     gentoo: { include ssmtp::gentoo }
     default: { include ssmtp::base }
   }
-  if $use_shorewall {
+  if hiera('use_shorewall',false) {
     include shorewall::rules::out::smtp
     include shorewall::rules::smtp::disable
     include shorewall::rules::smtps::disable

@@ -12,7 +12,7 @@
 # The place where the mail goes. The actual machine name is required
 # no MX records are consulted. Commonly mailhosts are named mail.domain.com
 # The example will fit if you are in domain.com and your mailhub is so named.
-mailhub=<%= mailhub %>
+mailhub=<%= scope.function_hiera('mailhub') %>
 
 # Example for SMTP port number 2525
 # mailhub=mail.your.domain:2525
@@ -22,7 +22,7 @@ mailhub=<%= mailhub %>
 # mailhub=mail.your.domain:465
 
 # Wher will the mail seem to come from?
-rewriteDomain=<%= ssmtp_rewrite_domain_real %>
+rewriteDomain=<%= scope.function_hiera('ssmtp_rewrite_domain',scope.lookupvar('::fqdn')) %>
 
 # The full hostname
 
@@ -31,14 +31,14 @@ rewriteDomain=<%= ssmtp_rewrite_domain_real %>
 # out the hostname itself.
 
 # hostname=_HOSTNAME_
-hostname=<%= ssmtp_hostname_real %>
+hostname=<%= scope.function_hiera('ssmtp_hostname',scope.lookupvar('::fqdn')) %>
 
 # Set this to never rewrite the "From:" line (unless not given) and to
 # use that address in the "from line" of the envelope.
-FromLineOverride=<%= ssmtp_from_line_override_real %>
+FromLineOverride=<%= scope.function_hiera('ssmtp_from_line_override','YES') %>
 
 # Use SSL/TLS to send secure messages to server.
-UseTLS=<%= ssmtp_uses_ssl_real %>
+UseTLS=<%= scope.function_hiera('ssmtp_uses_ssl','YES') %>
 
 #Specifies whether ssmtp does a EHLO/STARTTLS before starting SSL negotiation.  See RFC 2487.
 UseSTARTTLS=YES
