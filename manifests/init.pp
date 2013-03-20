@@ -1,9 +1,13 @@
-# modules/ssmtp/manifests/init.pp - manage ssmtp stuff
+# manage ssmtp stuff
 # Copyright (C) 2007 admin@immerda.ch
 #
-
 class ssmtp(
-  $manage_shorewall = false
+  $mailhub            = "mail.${domain}",
+  $rewrite_domain     = $::fqdn,
+  $hostname           = $::fqdn,
+  $from_line_override = 'YES',
+  $use_ssl            = 'YES',
+  $manage_shorewall   = false
 ) {
   case $::operatingsystem {
     centos: { include ssmtp::centos }
