@@ -2,13 +2,20 @@
 # Copyright (C) 2007 admin@immerda.ch
 #
 class ssmtp(
-  $mailhub            = "mail.${domain}",
+  $mailhub            = "mail.${::domain}",
   $rewrite_domain     = $::fqdn,
   $hostname           = $::fqdn,
   $from_line_override = 'YES',
   $use_ssl            = 'YES',
   $manage_shorewall   = false
 ) {
+
+  # set option file
+  $tls_ca_file = $::operatingsystem ? {
+    CentOS  => '/etc/pki/tls/certs/ca-bundle.crt',
+    default => undef,
+  }
+
   case $::operatingsystem {
     centos: { include ssmtp::centos }
     gentoo: { include ssmtp::gentoo }
