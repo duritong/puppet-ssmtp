@@ -17,7 +17,6 @@ class ssmtp(
   }
 
   case $::operatingsystem {
-    centos: { include ssmtp::centos }
     gentoo: { include ssmtp::gentoo }
     default: { include ssmtp::base }
   }
