@@ -48,10 +48,10 @@ UseSTARTTLS=YES
 
 # Use this RSA certificate.
 #TLSCert=/etc/ssl/certs/ssmtp.pem
-<% if @tls_ca_file -%>
+<% if scope['ssmtp::tls_ca_file'] -%>
 
 # CA file to verify
-TLS_CA_File=<%= @tls_ca_file %>
+TLS_CA_File=<%= scope['ssmtp::tls_ca_file'] %>
 <% end -%>
 
 # Get enhanced (*really* enhanced) debugging information in the logs

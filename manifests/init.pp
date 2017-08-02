@@ -12,12 +12,12 @@ class ssmtp(
 
   # set option file
   $tls_ca_file = $::operatingsystem ? {
-    CentOS  => '/etc/pki/tls/certs/ca-bundle.crt',
-    default => undef,
+    'CentOS' => '/etc/pki/tls/certs/ca-bundle.crt',
+    default  => undef,
   }
 
   case $::operatingsystem {
-    gentoo: { include ssmtp::gentoo }
+    'Gentoo': { include ssmtp::gentoo }
     default: { include ssmtp::base }
   }
   if $manage_shorewall {
